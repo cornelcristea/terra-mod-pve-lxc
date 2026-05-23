@@ -129,8 +129,8 @@ resource "null_resource" "dev_net_tun" {
   command = <<EOT
     sshpass -p "${var.pve.password}" ssh -o StrictHostKeyChecking=no root@${var.pve.host} \
     "
-      echo 'lxc.cgroup2.devices.allow: c 10:200 rwm' >> /etc/pve/lxc/${proxmox_virtual_environment_container.this.vm_id}.conf;
-      echo 'lxc.mount.entry: /dev/net/tun dev/net/tun none bind,create=file' >> /etc/pve/lxc/${proxmox_virtual_environment_container.this.vm_id}.conf;
+      echo 'lxc.cgroup2.devices.allow = c 10:200 rwm' >> /etc/pve/lxc/${proxmox_virtual_environment_container.this.vm_id}.conf;
+      echo 'lxc.mount.entry = /dev/net/tun dev/net/tun none bind,create=file' >> /etc/pve/lxc/${proxmox_virtual_environment_container.this.vm_id}.conf;
     "
     EOT
   }
